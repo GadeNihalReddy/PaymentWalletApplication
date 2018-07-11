@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import com.capgemini.walletapp.bean.WalletApplication;
 import com.capgemini.walletapp.service.WalletApplicationService;
@@ -109,7 +113,17 @@ public static void login() {
 			service.fundTransfer(accNo, tran_amt);
 			break;
 		case 5:
-			System.out.println(service.printTransactions());
+			Map<String,Double> trans=new HashMap<String,Double>();
+			trans=service.printTransactions();
+			Set<String> st=trans.keySet();
+			Iterator<String> it=st.iterator();
+			while(it.hasNext())
+			{
+				String s=it.next();
+				System.out.println(s);
+				System.out.println(trans.get(s));
+			}
+			
 			break;
 		case 6:
 			System.out.println("ThankYou");
