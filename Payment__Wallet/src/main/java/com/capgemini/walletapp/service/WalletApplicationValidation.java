@@ -46,6 +46,7 @@ public class WalletApplicationValidation {
 	{
 		if(age<15)
 		{
+			System.err.println("Age should be greater than 15");
 			return false;
 		}
 		return true;
@@ -55,6 +56,7 @@ public class WalletApplicationValidation {
 	{
 		if(email.isEmpty())
 		{
+			System.err.println("Email should not be empty");
 			return false;
 		}
 		return true;
@@ -62,17 +64,31 @@ public class WalletApplicationValidation {
 	}
 	public boolean isValidUsername(String username)
 	{
-		
+		if(username.isEmpty())
+		{
+			System.err.println("UserName should not be empty");
+			return false;
+		}
 		return true;
 		
 	}
 	public boolean isValidPassword(String password)
 	{
+		if(password.isEmpty())
+		{
+			System.err.println("password should not be empty");
+			return false;
+		}
 		return true;
 		
 	}
 	public boolean isValidAmount(double amount)
 	{
+		if(amount<=0)
+		{
+			System.err.println("Amount should be greater than 0");
+			return false;
+		}
 		return true;
 		
 	}

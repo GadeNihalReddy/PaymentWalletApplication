@@ -11,14 +11,14 @@ public class WalletApplicationServiceTest extends TestCase {
 	
 
 	public void testCreateAccount() {
-		assertEquals(0,service.createAccount(details));
+		assertEquals(1,service.createAccount(details));
 		
 		assertTrue(true);
 		
 	}
 
 	public void testLogin() {
-		assertEquals(false,service.login(details.getUsername(), details.getPassword()));
+		assertEquals(true,service.login(details.getUsername(), details.getPassword()));
 		
 	}
 
@@ -28,17 +28,17 @@ public class WalletApplicationServiceTest extends TestCase {
 	}
 
 	public void testDeposit() {
-		assertEquals(0,service.deposit(2000));
+		assertEquals(1,service.deposit(2000));
 		
 	}
 
 	public void testWithdraw() {
-		assertEquals(0,service.withdraw(2000));
+		assertEquals(1,service.withdraw(2000));
 		
 	}
 
 	public void testFundTransfer() {
-		assertEquals(0,service.fundTransfer(12345, 25000));
+		assertEquals(1,service.fundTransfer(12345, 25000));
 		
 	}
 
