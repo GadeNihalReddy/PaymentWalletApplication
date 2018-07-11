@@ -24,7 +24,7 @@ public class WalletApplication {
 	public String getLastname() {
 		return lastName;
 	}
-	public void setLastname(String lastname) {
+	public void setLastname(String lastName) {
 		this.lastName = lastName;
 	}
 	public String getGender() {

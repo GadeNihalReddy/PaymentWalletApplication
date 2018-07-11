@@ -1,5 +1,7 @@
 package com.capgemini.walletapp.service;
 
+import java.util.Map;
+
 import com.capgemini.walletapp.bean.WalletApplication;
 
 public interface IWalletApplicationService {
@@ -10,5 +12,6 @@ public interface IWalletApplicationService {
 	public int deposit(double amount);
 	public int withdraw(double amount);
 	public int fundTransfer(long accNo,double amount);
+	public Map printTransactions();
 
 }
