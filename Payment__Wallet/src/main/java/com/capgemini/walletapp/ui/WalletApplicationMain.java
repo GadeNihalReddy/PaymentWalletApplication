@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import com.capgemini.walletapp.bean.Customer;
 import com.capgemini.walletapp.bean.WalletApplication;
 import com.capgemini.walletapp.service.WalletApplicationService;
 import com.capgemini.walletapp.service.WalletApplicationValidation;
@@ -41,18 +42,30 @@ public static void createAccount() {
 		double amount=Double.parseDouble(br.readLine());
 		LocalDate date=LocalDate.now();
 		long accNo=(long) (Math.random()*123456789 + 999999999);
-		
+		Customer data=new Customer();
 		WalletApplication details=new WalletApplication();
-		details.setFirstName(firstName);
-		details.setLastname(lastName);
-		details.setGender(gender);
-		details.setMobileNo(mobileNo);
-		details.setAge(age);
-		details.setEmail(email);
-		details.setUsername(username);
-		details.setPassword(password);
+		data.setFirstName(firstName);
+		data.setLastName(lastName);
+		data.setGender(gender);
+		data.setMobileNo(mobileNo);
+		data.setAge(age);
+		data.setEmail(email);
+		data.setUsername(username);
+		data.setPassword(password);
+		
+//		details.setFirstName(firstName);
+//		details.setLastname(lastName);
+//		details.setGender(gender);
+//		details.setMobileNo(mobileNo);
+//		details.setAge(age);
+//		details.setEmail(email);
+//		details.setUsername(username);
+//		details.setPassword(password);
 		details.setAmount(amount);
+		details.setAccNo(accNo);
+		details.setCust(data);
 		details.setDate(date);
+		
 		boolean isValidFName=validate.isValidFirstName(firstName);
 		boolean isValidLName=validate.isValidLastname(lastName);
 		boolean isValidgender=validate.isValidGender(gender);
@@ -62,6 +75,7 @@ public static void createAccount() {
 		{
 			service.createAccount(details);
 			System.out.println("Your Account has been created");
+			System.out.println("Account No is :"+details.getAccNo());
 		}
 		else
 		{
