@@ -12,8 +12,15 @@ public class WalletApplication {
 	private long tid;
 	private List<String> trans;
 	private Customer cust;
+	private String accountType;
 	
 	
+	public String getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
 	public long getAccNo() {
 		return accNo;
 	}

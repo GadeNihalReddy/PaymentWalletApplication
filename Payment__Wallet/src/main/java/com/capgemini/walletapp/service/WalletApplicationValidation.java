@@ -54,9 +54,10 @@ public class WalletApplicationValidation {
 	}
 	public boolean isValidEmail(String email)
 	{
-		if(email.isEmpty())
+		
+		if(email.isEmpty()||!(email.endsWith(".com")))
 		{
-			System.err.println("Email should not be empty");
+			System.err.println("Email should not be emptyand should end with .com");
 			return false;
 		}
 		return true;
