@@ -1,5 +1,6 @@
 package com.capgemini.walletapp.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.capgemini.walletapp.bean.WalletApplication;
@@ -12,6 +13,6 @@ public interface IWalletApplicationDAO {
 	public int deposit(double amount);
 	public int withdraw(double amount);
 	public int fundTransfer(long accNo,double amount);
-	public Map printTransactions();
+	public List printTrans();
 
 }

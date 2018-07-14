@@ -17,9 +17,6 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 	static WalletApplication  temp=new WalletApplication();
 	static List<WalletApplication> list=new ArrayList<WalletApplication>();
 	static Map<String,Double> transactions=new HashMap<String,Double>();
-	//static Map<LocalDate,Double> transaction=new HashMap<LocalDate,Double>();
-	//static Map<LocalDateTime,Double> trans=new HashMap<LocalDateTime,Double>();
-
 	public int createAccount(WalletApplication details) {
 		flag=list.add(details);
 		if(flag)
@@ -37,7 +34,6 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 		{
 			WalletApplication app=it.next();
 			if(app.getCust().getUsername().equals(username)&&app.getCust().getPassword().equals(password))
-			//if(app.getUsername().equals(username) && app.getPassword().equals(password))
 			{
 				System.out.println("user found");
 				temp=app;
@@ -48,13 +44,6 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 	}
 
 	public double showBalance() {
-//		Iterator<WalletApplication> it =list.iterator();
-//		while(it.hasNext())
-//		{
-//			WalletApplication app=it.next();
-//			if(temp.getUsername().equals(app.getUsername()))
-//			blnc=app.getAmount();
-//		}
 		blnc=temp.getAmount();
 		return blnc;
 	}
@@ -65,15 +54,15 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 		{
 			WalletApplication app=it.next();
 			if(temp.getCust().getUsername().equals(app.getCust().getUsername()))
-			//if(temp.getUsername().equals(app.getUsername())) 
 			{
 			tid=(long)(Math.random()*1234 + 9999);
 			blnc=app.getAmount()+amount;
 			app.setAmount(blnc);
 			LocalDateTime d=LocalDateTime.now();
 			
-			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Deposited amount";
-			transactions.put(s, amount);
+			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Deposited amount"+ Double.toString(amount);
+			app.getTrans().add(s);
+			//transactions.put(s, amount);
 			System.out.println("Your account is credited with amount "+amount+" balance in your account is "+app.getAmount());
 			return 1;
 			}
@@ -87,14 +76,15 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 		{
 			WalletApplication app=it.next();
 			if(temp.getCust().getUsername().equals(app.getCust().getUsername()))
-			//if(temp.getUsername().equals(app.getUsername())) 
+			
 			{
 			tid=(long)(Math.random()*1234 + 9999);
 			blnc=app.getAmount()-amount;
 			app.setAmount(blnc);
 			LocalDateTime d=LocalDateTime.now();
-			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Withdrawn amount";
-			transactions.put(s, amount);
+			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Withdrawn amount"+Double.toString(amount);
+			app.getTrans().add(s);
+			//transactions.put(s, amount);
 			System.out.println("Your account is debited with amount "+amount+" balance in your account is "+app.getAmount());
 			return 1;
 		}
@@ -109,31 +99,43 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 		{
 			WalletApplication app=it.next();
 			if(temp.getCust().getUsername().equals(app.getCust().getUsername()))
-			//if(temp.getUsername().equals(app.getUsername())) 
 			{
 			tid=(long)(Math.random()*1234 + 9999);
 			blnc=app.getAmount()-amount;
 			app.setAmount(blnc);
-			//transfer to same bank account holder
-//			while(it1.hasNext()) {
-//				WalletApplication app1=it.next();
-//				if(app1.getAccNo()==accNo) {
-//					app1.setAmount(app1.getAmount()+amount);
-//				}
-//			}
 			LocalDateTime d=LocalDateTime.now();
-			String s="TransactionId "+Long.toString(tid)+" at "+d.toString()+" and Transfered amount";
-			transactions.put(s, amount);
-			//transactions.put(LocalDateTime.now(), amount);
+			//transfer to same bank account holder
+			while(it1.hasNext()) {
+				WalletApplication app1=it1.next();
+				if(app1.getAccNo()==accNo) {
+					app1.setAmount(app1.getAmount()+amount);
+					String s="TransactionId "+Long.toString(tid)+" at "+d.toString()+" and Recieved amount"+Double.toString(amount)+Long.toString(app.getAccNo());
+					app1.getTrans().add(s);
+				}
+			}
+			
+			String s="TransactionId "+Long.toString(tid)+" at "+d.toString()+" and Transfered amount"+Double.toString(amount);
+			app.getTrans().add(s);
+			//transactions.put(s, amount);
 			System.out.println("fund amount "+amount+"is transfered to accountNumber"+accNo+" balance in your account is "+app.getAmount());
 			return 1;
 		}}
 		return 0;
 	}
 
-	public Map printTransactions() {
+	public List printTrans() {
+		Iterator<WalletApplication> it =list.iterator();
+		while(it.hasNext())
+		{
+			WalletApplication app=it.next();
+			if(temp.getCust().getUsername().equals(app.getCust().getUsername()))
+			
+			{
+				return app.getTrans();
+			}
+		}
 		
-		return transactions;
+		return null;
 	}
 
 }

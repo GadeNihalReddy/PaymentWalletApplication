@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,6 +21,7 @@ public class WalletApplicationMain {
 public static void createAccount() {
 	WalletApplicationService service=new WalletApplicationService();
 	WalletApplicationValidation validate=new WalletApplicationValidation();
+	List<String> trans=new ArrayList<String>();
 	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 	
 	try {
@@ -52,17 +55,9 @@ public static void createAccount() {
 		data.setEmail(email);
 		data.setUsername(username);
 		data.setPassword(password);
-		
-//		details.setFirstName(firstName);
-//		details.setLastname(lastName);
-//		details.setGender(gender);
-//		details.setMobileNo(mobileNo);
-//		details.setAge(age);
-//		details.setEmail(email);
-//		details.setUsername(username);
-//		details.setPassword(password);
 		details.setAmount(amount);
 		details.setAccNo(accNo);
+		details.setTrans(trans);
 		details.setCust(data);
 		details.setDate(date);
 		
@@ -127,36 +122,37 @@ public static void login() {
 			service.fundTransfer(accNo, tran_amt);
 			break;
 		case 5:
-			Map<String,Double> trans=new HashMap<String,Double>();
-			trans=service.printTransactions();
-			Set<String> st=trans.keySet();
-			Iterator<String> it=st.iterator();
-			while(it.hasNext())
-			{
-				String s=it.next();
-				System.out.println(s);
-				System.out.println(trans.get(s));
-			}
+			System.out.println(service.printTrans());
+//			Map<String,Double> trans=new HashMap<String,Double>();
+//			trans=service.printTransactions();
+//			Set<String> st=trans.keySet();
+//			Iterator<String> it=st.iterator();
+//			while(it.hasNext())
+//			{
+//				String s=it.next();
+//				System.out.println(s);
+//				System.out.println(trans.get(s));
+//			}
 			
 			break;
 		case 6:
-			System.out.println("ThankYou");
-			System.exit(0);
+			mainMenu();
 			break;
 		default:
+			
 			System.out.println("Enter valid choice");
 			break;
 		}
 		}while(choice!=6);
 		
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	
 }
 
-	public static void main(String[] args) {
+	public static void mainMenu()
+	{
 		int key=0;
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("***Welcome to Payment Wallet Application***");
@@ -188,9 +184,10 @@ public static void login() {
 		}while(key!=3);
 
 	}
-
-	
-
-	
+	public static void main(String[] args) {
+		
+		mainMenu();
+		
+	}
 
 }

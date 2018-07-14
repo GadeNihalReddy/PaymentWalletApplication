@@ -1,5 +1,6 @@
 package com.capgemini.walletapp.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.capgemini.walletapp.bean.WalletApplication;
@@ -39,10 +40,10 @@ public class WalletApplicationService implements IWalletApplicationService {
 		
 		return dao.fundTransfer(accNo, amount);
 	}
-
-	public Map printTransactions() {
+	
+	public List printTrans() {
 		
-		return dao.printTransactions();
+		return dao.printTrans();
 	}
 
 }
