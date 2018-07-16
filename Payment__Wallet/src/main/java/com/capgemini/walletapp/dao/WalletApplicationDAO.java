@@ -60,7 +60,7 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 			app.setAmount(blnc);
 			LocalDateTime d=LocalDateTime.now();
 			
-			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Deposited amount"+ Double.toString(amount);
+			String s="TransactionId "+Long.toString(tid)+" on "+d.toString()+" and Deposited amount "+ Double.toString(amount);
 			app.getTrans().add(s);
 			//transactions.put(s, amount);
 			System.out.println("Your account is credited with amount "+amount+" balance in your account is "+app.getAmount());
@@ -82,7 +82,7 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 			blnc=app.getAmount()-amount;
 			app.setAmount(blnc);
 			LocalDateTime d=LocalDateTime.now();
-			String s="TransactionId "+Long.toString(tid)+"at"+d.toString()+" and Withdrawn amount"+Double.toString(amount);
+			String s="TransactionId "+Long.toString(tid)+" on "+d.toString()+" and Withdrawn amount"+Double.toString(amount);
 			app.getTrans().add(s);
 			//transactions.put(s, amount);
 			System.out.println("Your account is debited with amount "+amount+" balance in your account is "+app.getAmount());
@@ -109,15 +109,15 @@ public class WalletApplicationDAO implements IWalletApplicationDAO {
 				WalletApplication app1=it1.next();
 				if(app1.getAccNo()==accNo) {
 					app1.setAmount(app1.getAmount()+amount);
-					String s="TransactionId "+Long.toString(tid)+" at "+d.toString()+" and Recieved amount"+Double.toString(amount)+Long.toString(app.getAccNo());
+					String s="TransactionId "+Long.toString(tid)+" on "+d.toString()+" and Recieved amount"+Double.toString(amount)+Long.toString(app.getAccNo());
 					app1.getTrans().add(s);
 				}
 			}
 			
-			String s="TransactionId "+Long.toString(tid)+" at "+d.toString()+" and Transfered amount"+Double.toString(amount);
+			String s="TransactionId "+Long.toString(tid)+" on "+d.toString()+" and Transfered amount"+Double.toString(amount);
 			app.getTrans().add(s);
 			//transactions.put(s, amount);
-			System.out.println("fund amount "+amount+"is transfered to accountNumber"+accNo+" balance in your account is "+app.getAmount());
+			System.out.println("fund amount "+amount+"is transfered to accountNumber "+accNo+" balance in your account is "+app.getAmount());
 			return 1;
 		}}
 		return 0;

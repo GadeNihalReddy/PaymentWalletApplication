@@ -11,17 +11,17 @@ public class WalletApplicationValidationTest extends TestCase {
 
 	public void testIsValidLastname() {
 		assertEquals(false,v.isValidLastname(""));
-		assertEquals(true, v.isValidFirstName("gade"));
+		assertEquals(true, v.isValidLastname("gade"));
 	}
 
 	public void testIsValidGender() {
 		assertEquals(false,v.isValidGender(""));
-		assertEquals(true, v.isValidFirstName("male"));
+		assertEquals(true, v.isValidGender("male"));
 	}
 
 	public void testIsValidMobileNo() {
 		assertEquals(false,v.isValidMobileNo(""));
-		assertEquals(true, v.isValidFirstName("8008746024"));
+		assertEquals(true, v.isValidMobileNo("8008746024"));
 	}
 
 	public void testIsValidAge() {
@@ -41,7 +41,7 @@ public class WalletApplicationValidationTest extends TestCase {
 
 	public void testIsValidPassword() {
 		assertEquals(false,v.isValidPassword(""));
-		assertEquals(true,v.isValidPassword("12345"));
+		assertEquals(true,v.isValidPassword("1234567"));
 	}
 
 	public void testIsValidAmount() {

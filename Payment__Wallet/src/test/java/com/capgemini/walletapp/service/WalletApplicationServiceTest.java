@@ -18,8 +18,10 @@ public class WalletApplicationServiceTest extends TestCase {
 	}
 
 	public void testLogin() {
+		details.getCust().setUsername("nihal");
+		details.getCust().setPassword("Nihal@123");
 		assertEquals(true,service.login(details.getCust().getUsername(), details.getCust().getPassword()));
-		
+		//assertEquals(true,service.login("nihal", "Nihal@123"));
 	}
 
 	public void testShowBalance() {

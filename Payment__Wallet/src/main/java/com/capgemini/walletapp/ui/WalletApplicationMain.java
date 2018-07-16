@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.capgemini.walletapp.bean.Customer;
 import com.capgemini.walletapp.bean.WalletApplication;
+import com.capgemini.walletapp.exception.UserNotFoundException;
 import com.capgemini.walletapp.service.WalletApplicationService;
 import com.capgemini.walletapp.service.WalletApplicationValidation;
 
@@ -39,9 +40,9 @@ public static void createAccount() {
 		String email=br.readLine();
 		System.out.println("Enter UserName: ");
 		String username=br.readLine();
-		System.out.println("Enter password");
+		System.out.println("Enter password of minimum length 6");
 		String password=br.readLine();
-		System.out.println("Enter amount");
+		System.out.println("Enter minimum amount");
 		double amount=Double.parseDouble(br.readLine());
 		LocalDate date=LocalDate.now();
 		long accNo=(long) (Math.random()*123456789 + 999999999);
@@ -93,7 +94,8 @@ public static void login() {
 		System.out.println("Enter password");
 		String password=br.readLine();
 		
-		service.login(username, password);
+		if(service.login(username, password))
+		{
 		System.out.println("LoggedIn succesfully");
 		do {
 		System.out.println("1.ShowBalance\n2.Deposit\n3.Withdraw\n4.FundTransfer\n5.PrintTransactions\n6.Exit the Application");
@@ -144,6 +146,13 @@ public static void login() {
 			break;
 		}
 		}while(choice!=6);
+		}else {
+			try {
+				throw new UserNotFoundException("UserData Doesnot Exist");
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 	} catch (IOException e) {
 		e.printStackTrace();

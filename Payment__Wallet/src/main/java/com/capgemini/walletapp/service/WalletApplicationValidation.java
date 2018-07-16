@@ -80,6 +80,11 @@ public class WalletApplicationValidation {
 			System.err.println("password should not be empty");
 			return false;
 		}
+		if(password.length()<6)
+		{
+			System.err.println("minimum length of password is 6");
+			return false;
+		}
 		return true;
 		
 	}
