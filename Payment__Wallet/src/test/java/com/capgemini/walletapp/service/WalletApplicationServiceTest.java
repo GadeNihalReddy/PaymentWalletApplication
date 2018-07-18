@@ -13,7 +13,7 @@ public class WalletApplicationServiceTest extends TestCase {
 	public void testCreateAccount() {
 		assertEquals(1,service.createAccount(details));
 		
-		assertTrue(true);
+		//assertTrue(true);
 		
 	}
 
