@@ -7,14 +7,14 @@ public class Wallet {
 	private long accountNumber;
 	private double initalBalance;
 	private long adharNumber;
-	private Date date;
+	private LocalDate date;
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(LocalDate localDate) {
+		this.date = localDate;
 	}
 
 	public long getAdharNumber() {

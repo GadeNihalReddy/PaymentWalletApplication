@@ -106,7 +106,7 @@ public class Client {
 							System.out.println("Select any option:");
 							System.out.println("1. SHOW BALANCE                           2.DEPOSIT      ");
 							System.out.println("3. WITHDRAW                               4.FUND TRANSFER");
-							System.out.println("5. PRINT TRANSCATION                      6.EXIT         ");
+							System.out.println("5. PRINT TRANSCATION                      6.LOGOUT         ");
 							System.out.println("Enter your choice");
 							choice1 = Integer.parseInt(br.readLine());
 							switch (choice1) {
@@ -155,6 +155,7 @@ public class Client {
 								break;
 							case 6:
 								System.out.println("Thank You!!");
+								service.logout();
 								break;
 							}
 						} while (choice1 != 6);

@@ -47,4 +47,9 @@ public class PaymentAppService implements IPaymentAppService {
 	dao.printTranscation();
 	}
 
+	public void logout() {
+		dao.logout();
+		
+	}
+
 }

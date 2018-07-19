@@ -18,4 +18,5 @@ public interface IPaymentAppService {
 	public boolean fundTransfer( long receiverAccountNumber,double amount);
 
 	public void printTranscation();
+	public void logout();
 }
