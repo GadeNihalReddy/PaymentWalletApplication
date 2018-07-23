@@ -9,7 +9,6 @@ public class CustomerTest extends TestCase {
 		cust.setAdharNumber(12345678);
 		assertEquals(12345678, cust.getAdharNumber());
 	}
-
 	public void testGetWallet() {
 		
 	}

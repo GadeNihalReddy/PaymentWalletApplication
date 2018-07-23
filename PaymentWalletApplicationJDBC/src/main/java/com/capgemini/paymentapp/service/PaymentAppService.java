@@ -4,12 +4,13 @@ import java.util.Map;
 
 import com.capgemini.paymentapp.bean.Customer;
 
-import com.capgemini.paymentapp.dao.PaymentAppdao;
+//import com.capgemini.paymentapp.dao.PaymentAppdao;
+import com.capgemini.paymentapp.dao.PaymentAppdao2;
 
 public class PaymentAppService implements IPaymentAppService {
   
 	
-	PaymentAppdao dao=new PaymentAppdao();
+	PaymentAppdao2 dao=new PaymentAppdao2();
 	Customer customer= new Customer();
 	public boolean createAccount(Customer customer) {
 		
